@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'login.css' %}">
+  <title>Login</title>
+</head>
+<body>
+  <div class="login-wrapper">
+    <form action="{% url 'login' %}" class="form" method="POST">
+      <img src="{% static 'profile.png' %}" alt="">
+      {% csrf_token %}
+      <h2>Login</h2>
+      <div class="input-group">
+        <input type="text" name="username" id="loginUser" required>
+        <label for="loginUser">Employee ID</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" id="loginPassword" required>
+        <label for="loginPassword">Password</label>
+      </div>
+      <input type="submit" value="Login" class="submit-btn">
+    </form>
+  </div>
+</body>
+<style>
+  body{
+  background: url("{% static 'bg.jpg' %}") no-repeat center;
+  }
+</style>
+</html>

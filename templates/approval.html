@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'approval.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="request">
+    <h1 class="head">LEAVE APPROVAL</h1>
+    <table>
+        <tr>
+            <th>SL. NO</th>
+            <th>NAME</th>
+            <th>EMPLOYEE ID</th>
+            <th>START DATE</th>
+            <th>END DATE</th>
+            <th>DURATION</th>
+            <th>TYPE</th>
+            <th>APPROVAL</th>
+        </tr>
+
+        {% for approval in approvals %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{ approval.Employee_name.get_full_name }} </td>
+            <td>{{approval.Employee_name.Employee_id}}</td>
+            <td>{{approval.Start_date}}</td>
+            <td>{{approval.End_date}}</td>
+            <td>{{approval.No_of_Days}}</td>
+            <td>{{approval.Type}}</td>
+            <td>
+                <a href="{% url 'decision' approval.id 1 %}">
+                                    <button class="tick" id="approved" value={{approval.id}} action="{% url 'decision' approval.id 1 %}" type="submit"><img  src="{% static 'correct.png' %}"></button>
+                </a>
+                <a href="{% url 'decision' approval.id 0 %}">
+
+                                    <button class="wrong" id="disapproved" value={{approval.id}} action="{% url 'decision' approval.id 0 %}" type="submit"><img src="{% static 'cross.png' %}"></button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+       <!-- <tr>
+            <td>1</td>
+            <td>GOURAV AGARWAL</td>
+            <td>2134</td>
+            <td>02.01.2023</td>
+            <td>10.01.2023</td>
+            <td>10 days</td>
+            <td>HOLIDAY</td>
+            <td>
+                
+                <button class="tick"><img  src="static/correct.png"></button>
+                <button class="wrong"><img src="static/cross.png"></button>
+            </td>
+        </tr>
+            <tr>
+                <td>1</td>
+                <td>GOURAV AGARWAL</td>
+                <td>2134</td>
+                <td>02.01.2023</td>
+                <td>10.01.2023</td>
+                <td>10 days</td>
+                <td>HOLIDAY</td>
+                <td>
+                    <button class="tick"><img  src="static/correct.png"></button>
+                    <button class="wrong"><img src="static/cross.png"></button>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>GOURAV AGARWAL</td>
+                <td>2134</td>
+                <td>02.01.2023</td>
+                <td>10.01.2023</td>
+                <td>10 days</td>
+                <td>HOLIDAY</td>
+                <td>
+                    <button class="tick"><img  src="static/correct.png"></button>
+                    <button class="wrong"><img src="static/cross.png"></button>
+                </td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>GOURAV AGARWAL</td>
+                <td>2134</td>
+                <td>02.01.2023</td>
+                <td>10.01.2023</td>
+                <td>10 days</td>
+                <td>HOLIDAY</td>
+                <td>
+                    <button class="tick"><img  src="static/correct.png"></button>
+                    <button class="wrong"><img src="static/cross.png"></button>
+                </td>
+            </tr>-->
+    </table>
+</div>
+{% endblock content %} 

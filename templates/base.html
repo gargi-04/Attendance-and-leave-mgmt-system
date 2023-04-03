@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+
+    {% block head %} {% endblock head %}
+</head>
+
+<body>
+    <nav>
+        <h1 class="logo">Attendance and leave Management System </h1>
+        <div class="nav-box">
+            <div class="signup">
+                <span id = "Time">12:00:00:</span>
+                <div class="time">
+                    <img src="{% static 'time.png' %}">
+                </div>
+            </div>
+            <div class="logout">
+               <a href="{% url 'logout' %}">
+                <img src="{% static 'logout.png' %}">
+            </a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="sidebar">
+        <div class="data">
+            <div class="profile"><img src="{% static 'profile.png' %}"></div>
+            <div class="emp-data">
+                <h3 class="text">
+                    {{request.user.get_full_name}}
+                </h3>
+                <h5 class="id">
+                    EMPLOYEE ID: {{request.user.Employee_id}}
+                </h5>
+            </div>
+        </div>
+        <div class="options">
+            <label class="content">
+                <ul>
+                    <li><a href="{% url 'request' %}">Leave Request</a></li>
+                    <li><a href="{% url 'history' %}">Leave History</a></li>
+                    {% if request.user.is_manager %}
+                    <li><a href="{% url 'record' %}">Employee's Record</a></li>
+                    <li><a href="{% url 'approval' %}">Leave Approval</a></li>
+                     {% endif %}
+                </ul>
+            </label>
+        </div>
+        <div class="leave">
+                <ul>
+                    <li>personal leaves left: {{request.user.Personal_leave}}</li>
+                    <li>medical leaves left: {{request.user.Medical_leave}}</li>
+                </ul>
+        </div> 
+    </div>
+    <div class="box">
+    {% block content %}
+    {% endblock content %} 
+</div>
+<script>
+
+
+setInterval(function ()
+ {var element = document.getElementById("Time")
+ var d = new Date(); // for now
+//var time= d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+var time= d.toLocaleTimeString();
+ element.innerHTML =time
+}, 1000);
+</script>
+</body>
+
+</html>

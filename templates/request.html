@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'request.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="form">
+
+    <h1 class="head">Apply Leave</h1>
+    <div class="inner">
+
+        <!--<form action="{% url 'request' %}" method="POST">-->
+            <form action="{% url 'request' %}" method="POST">
+            {% csrf_token %}
+
+           <label for="type"> Leave Type</label>
+            <select type="text" class="options" name='type'>
+                <option value=""></option>
+                <option value="Medical">medical</option>
+                <option value="Personal">personal</option>
+            </select>
+            <div class="duration">
+            <div class="start">
+                <label for="start">start date :</label>
+                <input type="date" id="start" name='s_date' value="">
+            </div>
+            <div class="end">
+                <label class ="date" for="end">end date :</label>
+                <input type="date" id="end" name="e_date" value="">
+            </div>
+        </div>
+            <label class="reason " for="reason">reason</label>
+            <textarea class="reason space" rows="7" name="reason" value="">
+            </textarea>
+            <button class="submit" type="submit" value="sub">SUBMIT</button>
+            <button class="cancel" type="reset">CANCEL</button>
+        </form>
+        <!--<button class="submit">SUBMIT</button>-->
+    </div>
+</div>
+{% endblock content %}

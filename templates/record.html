@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'record.css' %}">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    //pie chart
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawpieChart);
+
+    function drawpieChart() {
+
+        var data = google.visualization.arrayToDataTable([
+        ['Type', 'Number of Days'],
+        ['Present', {{ present }}],
+        ['Medical leave', {{ medical }}],
+        ['Personal leave', {{ personal }}],
+        ['Absent ', {{ absent }}],
+        ['Holiday ', {{ Holiday }}],
+        ]);
+
+        var options = {
+            title: ''
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+    //bar graph
+    google.charts.load("current", { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+     ["weeks", "hours", { role: "style" }],
+      ["week1", {{ weekHour.0 }}, "#b87333"],
+     ["week2", {{ weekHour.1 }}, "silver"],
+      ["week3", {{ weekHour.2 }}, "gold"],
+      ["week4", {{ weekHour.3 }}, "color: #e5e4e2"],
+     ["week5", {{ weekHour.4 }}, "color: #e5e4e2"]
+    ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            {
+                calc: "stringify",
+                sourceColumn: 1,
+                type: "string",
+                role: "annotation"
+            },
+            2]);
+
+        var options = {
+            title: "hours worked per week",
+            bar: { groupWidth: "70%" },
+            legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
+</script>
+{% endblock head %}
+{% block content %}
+<div class="head">
+
+    <h1>record:{{ currentUser.get_full_name }}({{currentUser.Employee_id}})</h1>
+    <select class="option" onchange="load()"  id="sid">
+        <option>Choose Employee</option>
+        {% for user in users %}
+        <option value="{{ user.Employee_id }}"> <a href=" {% url 'chooseRecord' user.Employee_id %} ">
+            {{ user.get_full_name }}</a>
+        </option>
+        {% endfor %}
+        
+    </select>
+</div>
+<div class="outer">
+    <div class="record">
+        <h3 class="key">NO. OF DAYS PRESENT:</h3>
+        <h3 class="value">{{ present }}</h3>
+        <h3 class="key">NO. OF DAYS ABSENT :</h3>
+        <h3 class="value">{{ absent }}</h3>
+        <h3 class="key">NO. OF LEAVES :</h3>
+        <h3 class="value">{{personal|add:medical}}</h3>
+        <h3 class="key">TOTAL WORKING DAYS:</h3>
+        <h3 class="value">{{ present|add:absent}}</h3>
+        <h3 class="key">TOTAL WORKING HOURS :</h3>
+        <h3 class="value">{{ totalH }}</h3>
+        <h3 class="key">AVERAGE WORKING HOURS :</h3>
+        <h3 class="value">{{ averH }}</h3>
+        <h3 class="key">PERSONAL LEAVE LEFT :</h3>
+        <h3 class="value">{{ currentUser.Personal_leave }}</h3>
+        <h3 class="key">MEDICAL LEAVE LEFT:</h3>
+        <h3 class="value">{{ currentUser.Medical_leave }}</h3>
+    </div>
+    <div class="bar-graph">
+        <div id="columnchart_values"></div>
+    </div>
+    <div class="calendar">
+        <h3>{{monthName|upper}} {{ year }}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>mon</th>
+              <th>tue</th>
+              <th>wed</th>
+              <th>thu</th>
+              <th>fri</th>
+              <th>sat</th>
+              <th>sun</th>
+            </tr>
+          </thead>
+          <tbody>
+    
+            {% for j in cal %}
+            <tr>
+              {% for i in j %}
+              {% if i.0 %}
+              <td class="{{ i.1 }}">{{ i.0 }}</td>
+              {% else %}
+              <td></td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+</div>
+<div class="outer-1">
+    <div class="pie-chart">
+        <div id="piechart"></div>
+    </div>
+    <div class="table">
+        <table>
+            <tr>
+                <th>START DATE</th>
+                <th>END DATE</th>
+                <th>DAYS</th>
+                <th>TYPE</th>
+                <th>STATUS</th>
+            </tr>
+            {% for leave in leaves %}
+            <tr>
+                <td>{{leave.Start_date}}</td>
+                <td>{{leave.End_date}}</td>
+                <td>{{leave.No_of_Days}}</td>
+                <td>{{leave.Type}}</td>
+                <td>{{leave.Pending_Status}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+
+<script>
+function load()
+{
+    Employee_id = document.getElementById("sid").value
+    window.location = '/record/' + Employee_id   
+}
+
+</script>
+
+{% endblock content %}
+

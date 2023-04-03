@@ -1,0 +1,91 @@
+.form{
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-left: 2%;
+}
+.form h1{
+    margin-bottom: 2%;
+    margin-top: 3%;
+    color: #2D8BBA;
+    text-transform: capitalize;
+}
+.form .inner {
+    background-color: white;
+    width: 80vh;
+    border-radius: 2px;
+    padding: 2% 2%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    background-color:  #F2F8F9 ;
+}
+.form select {
+    width: 100%;
+    border:none; 
+    border-bottom: 1px solid black;
+    height: 5vh;
+    margin-bottom: 2%;
+}
+.duration{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+.start ,.end {
+    width: 47%;
+}
+.start input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.end input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.form .inner .reason{
+    width: 100%;
+    resize: none;
+    text-transform: capitalize;
+
+}
+.form .inner .space{
+    margin-top: 5px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+.inner .submit{
+    padding: 2px;
+    width: 20%;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #2D8BBA;
+    color: white;
+    border: none;
+    font-weight: 700;
+}
+.inner .cancel{
+    padding: 2px;
+    width: 20%;
+    height: 30px;
+    background-color: white;
+    color: #4CAF50;
+    border: 1px solid  #4CAF50;
+    font-weight: 700;
+}
+.cancel:hover{
+    background-color: #4CAF50;
+    color: white;
+    cursor:pointer;
+}
+.submit:hover{
+    cursor:pointer;
+}
+.form .inner .options{
+    text-transform: capitalize;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

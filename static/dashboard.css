@@ -1,0 +1,126 @@
+.dashboard {
+    background-color: blue;
+    position: relative;
+    padding: 2%;
+    width: 100%;
+    background-color: rgb(247, 247, 247);
+    height: 90vh;
+}
+
+.dashboard div {
+    border-radius: 5%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.212);
+}
+
+.pie-chart {
+    height: 40%;
+    width: 43%;
+    right: 3%;
+    bottom: 3%;
+    position: absolute;
+}
+
+.bar-graph {
+    width: 50%;
+    margin-right: 1%;
+    height: 70%;
+    left: 3%;
+    top: 3%;
+    position: absolute;
+}
+
+#piechart {
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+#columnchart_values {
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.calendar h3 {
+    padding-top: 1%;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    border-radius: 5%;
+    background-color: rgb(68, 135, 236);
+}
+
+.calendar table {
+    padding: 4%;
+    width: 100%;
+    height: 90%;
+    border-collapse: collapse;
+
+}
+
+.calendar th {
+    border: 1px solid;
+}
+
+.calendar tbody td:first-child,
+.calendar tbody td:last-child {
+    font-weight: 500;
+    color: red;
+}
+
+.calendar table th {
+    text-align: center;
+}
+
+.calendar table td {
+    text-align: center;
+}
+
+.calendar {
+    background-color: #ffffff;
+    height: 50%;
+    width: 43%;
+    margin-bottom: 4%;
+    top: 3%;
+    right: 3%;
+    position: absolute;
+}
+
+.stats {
+    width: 50%;
+    height: 20%;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    left: 3%;
+    bottom: 3%;
+    position: absolute;
+}
+
+.stats h3 {
+    text-align: center;
+}
+
+.calendar table td:hover {
+    border: 1px solid;
+}
+
+.Present {
+    color: rgb(0, 0, 0) !important;
+    background-color: green;
+}
+
+.Absent {
+    color: purple !important;
+}
+
+.Leave {
+    color: brown !important;
+}

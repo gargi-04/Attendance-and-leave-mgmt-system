@@ -1,0 +1,204 @@
+body {
+    background-color: #F2F8F9;
+}
+
+.box {
+    height: 92vh;
+}
+
+.head {
+    width: 100%;
+    padding: 2%;
+    height: 13vh;
+}
+
+.head h1 {
+    width: 80%;
+    float: left;
+    height: 100%;
+    text-transform: uppercase;
+}
+
+.option {
+    height: 100%;
+    width: 15%;
+}
+
+.head .option option {
+    text-align: center;
+    font-size: large;
+    padding: 2px;
+}
+
+.head .option {
+    font-size: larger;
+}
+
+.record {
+    width: 30%;
+    height: 100%;
+    text-align: left;
+    margin-left: 2%;
+    padding-top: 10px;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.212);
+    border-radius: 2%;
+    background-color: rgb(255, 255, 255);
+    padding-left: 3%;
+    overflow: auto;
+}
+
+.outer {
+    width: 100%;
+    display: flex;
+    height: 40%;
+    margin-bottom: 5px;
+    justify-content: space-evenly;
+}
+
+.record h3 {
+    padding: 5px;
+    display: inline-block;
+}
+
+.record .key {
+    width: 70%;
+}
+
+.record .value {
+    width: 20%;
+}
+
+.bar-graph {
+    display: inline-block;
+    width: 30%;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.212);
+    border-radius: 2%;
+}
+
+#columnchart_values {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.calendar h3 {
+    padding-top: 1%;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    border-radius: 5%;
+    background-color: rgb(68, 135, 236);
+}
+
+.calendar table {
+    padding: 4%;
+    width: 100%;
+    height: 90%;
+    border-collapse: collapse;
+}
+
+.calendar th {
+    border: 1px solid;
+
+}
+
+.calendar tbody td:nth-child(6),
+.calendar tbody td:last-child {
+    font-weight: 500;
+    color: red !important;
+    background-color: white !important;
+}
+
+.calendar table th {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.calendar table td {
+    text-align: center;
+    border: 1px solid black;
+}
+
+.calendar {
+    background-color: #ffffff;
+    height: 100%;
+    width: 30%;
+    margin-bottom: 4%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.212);
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+#piechart {
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.outer-1 {
+    padding: 2%;
+    margin-top: 2%;
+    width: 100%;
+    height: 60%;
+}
+
+.pie-chart {
+    width: 45%;
+    float: left;
+    height: inherit;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.212);
+    border-radius: 2%;
+    overflow: hidden;
+}
+
+.table table {
+    width: 50%;
+    padding: 2%;
+    float: right;
+    border-collapse: collapse;
+}
+
+.table table tr th {
+    background-color: #2D8BBA;
+    padding: 1%;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+.table tr:hover {
+    background-color: #ebebee;
+}
+
+.table td {
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    padding-top: 5px;
+    border: 1px solid;
+}
+
+.Present {
+    color: rgb(255, 255, 255);
+    background-color: green;
+}
+
+.Absent {
+    color: white;
+    background-color: red;
+}
+
+.Leave {
+    color: white;
+    background-color: lightblue;
+}
